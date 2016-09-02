@@ -1,0 +1,75 @@
+//定义项目分组和版本
+//group 'cn.geobeans'
+//version '1.0.0'
+version ''
+
+//定义项目工程：java , war
+apply plugin: 'java'
+apply plugin: 'war'
+
+//编译的兼容版本
+//sourceCompatibility = 1.7
+
+//资源仓库
+repositories {
+    jcenter()
+}
+
+//定义spring版本
+def springVer = "4.3.2.RELEASE";
+def springSecVer = '4.1.3.RELEASE';
+//定义hibernate版本
+def hibernateVer = '5.1.1.Final';
+
+//项目依赖
+dependencies {
+
+    /***************************
+     * 引入自定义的Lib jar包
+     **************************/
+
+    compile fileTree(dir: 'libs', include: '*.jar')
+
+    /***************************
+     * 引入第三方库，来至于仓库：
+     ***************************/
+
+    //日志记录使用sl4j
+    compile group: 'org.slf4j', name: 'slf4j-log4j12', version: '1.7.21'
+
+    //引入spring
+    compile group: 'org.springframework', name: 'spring-webmvc', version: springVer
+    compile group: 'org.springframework', name: 'spring-test', version: springVer
+    compile group: 'org.springframework', name: 'spring-orm', version: springVer
+    //spring 安全
+    //spring 授权
+    compile group: 'org.springframework.security.oauth', name: 'spring-security-oauth2', version: '2.0.11.RELEASE'
+//    compile group: 'org.springframework.security', name: 'spring-security-config', version: springSecVer
+//    compile group: 'org.springframework.security', name: 'spring-security-web', version: springSecVer
+
+    //spring-mvc json 转换
+    compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.8.1'
+
+    //引入hibernate
+    compile group: 'org.hibernate', name: 'hibernate-core', version: hibernateVer
+    //支持GIS，5.X版本以上
+    //compile group: 'org.hibernate', name: 'hibernate-spatial', version: '5.1.1.Final'
+
+    //内存数据库H2，为了演示方便
+    compile group: 'com.h2database', name: 'h2', version: '1.4.192'
+
+    //引入数据源druid
+    compile group: 'com.alibaba', name: 'druid', version: '1.0.25'
+
+    //json转换工具
+    compile group: 'com.alibaba', name: 'fastjson', version: '1.2.16'
+
+    /***************************
+     * 引入测试相关：
+     ***************************/
+
+    //junit测试
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    // 为了进行REST接口测试，使用servlet3作为测试容器
+    providedCompile group: 'javax.servlet', name: 'javax.servlet-api', version: '3.1.0'
+}
