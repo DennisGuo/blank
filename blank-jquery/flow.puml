@@ -1,0 +1,13 @@
+@startuml
+   folder 前端开发环境  #5aa2ee{
+
+       node "NodeJs" #ffaa00 {
+
+           node "bower"
+           note right:管理依赖
+
+           node "gulp"
+           note right : 编译、构建、合并\n压缩、混淆、打包\n监控、发布、测试等
+       }
+}
+@enduml

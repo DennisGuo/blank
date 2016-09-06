@@ -1,6 +1,6 @@
 package cn.geobeans.web.blank.todolist;
 
-import cn.geobeans.web.common.web.JsonResponse;
+import cn.geobeans.web.common.web.CustomResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -34,33 +34,33 @@ public class TodoController {
 
     @ResponseBody
     @RequestMapping(value = DELETE_BY_ID, method = RequestMethod.DELETE)
-    public JsonResponse update(@PathVariable String id) {
+    public CustomResponse update(@PathVariable String id) {
         boolean rs = service.delete(id);
-        return new JsonResponse(rs);
+        return new CustomResponse(rs);
     }
     @ResponseBody
     @RequestMapping(value = PUT_UPDATE, method = RequestMethod.PUT)
-    public JsonResponse update(@RequestBody Todo todo) {
+    public CustomResponse update(@RequestBody Todo todo) {
         service.save(todo);
-        return new JsonResponse(todo);
+        return new CustomResponse(todo);
     }
     @ResponseBody
     @RequestMapping(value = POST_SAVE, method = RequestMethod.POST)
-    public JsonResponse postSave(@RequestBody Todo todo) {
+    public CustomResponse postSave(@RequestBody Todo todo) {
         service.save(todo);
-        return new JsonResponse(todo);
+        return new CustomResponse(todo);
     }
     @ResponseBody
     @RequestMapping(value = GET_LIST, method = RequestMethod.GET)
-    public JsonResponse getList() {
+    public CustomResponse getList() {
         List<Todo> rs = service.getAll();
-        return new JsonResponse(rs);
+        return new CustomResponse(rs);
     }
 
     @ResponseBody
     @RequestMapping(value = GET_BY_ID, method = RequestMethod.GET)
-    public JsonResponse getById(@PathVariable String id) {
+    public CustomResponse getById(@PathVariable String id) {
         Todo rs = service.getById(id);
-        return new JsonResponse(rs);
+        return new CustomResponse(rs);
     }
 }

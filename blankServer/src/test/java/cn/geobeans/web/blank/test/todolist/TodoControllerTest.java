@@ -1,9 +1,14 @@
 package cn.geobeans.web.blank.test.todolist;
 
+import cn.geobeans.web.common.web.Token;
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
@@ -19,6 +24,7 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
 import javax.servlet.http.HttpServletResponse;
+import java.util.HashMap;
 
 /**
  * REST接口测试
@@ -31,16 +37,33 @@ import javax.servlet.http.HttpServletResponse;
 })
 public class TodoControllerTest {
 
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
+
     @Autowired
     WebApplicationContext context;
 
     private MockMvc mvc;
     private Long before;
 
+    private String token;
+
     @Before
     public void before() {
         this.mvc = MockMvcBuilders.webAppContextSetup(context).build();
         this.before = System.currentTimeMillis();
+        try {
+            String rs = this.mvc.perform(MockMvcRequestBuilders.post("/auth").param("username","ghx").param("password","ghx"))
+                    .andReturn()
+                    .getResponse()
+                    .getContentAsString();
+            logger.debug("auth return : " + rs);
+            JSONObject rp = JSON.parseObject(rs);
+            JSONObject data = (JSONObject) rp.get("data");
+            Token t = data.getObject("token",Token.class);
+            token = t.getToken();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @After
@@ -52,7 +75,7 @@ public class TodoControllerTest {
     @Test
     public void getList() {
         try {
-            MockHttpServletResponse rs = this.mvc.perform(MockMvcRequestBuilders.get("/todo"))
+            MockHttpServletResponse rs = this.mvc.perform(MockMvcRequestBuilders.get("/todo?token="+token))
                     .andReturn()
                     .getResponse();
             int code = rs.getStatus();

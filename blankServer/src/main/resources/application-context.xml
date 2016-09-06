@@ -15,6 +15,14 @@
     <!--MVC配置，!!! 很重要，用于路由设置-->
     <mvc:annotation-driven/>
 
+    <!--接口安全token拦截器，具体流程参考readme.md中的流程图-->
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/*"/>
+            <bean class="cn.geobeans.web.common.web.CustomInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
+
     <!--定义数据源-->
     <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
         <property name="driverClassName" value="${jdbc.driver}"/>

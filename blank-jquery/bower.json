@@ -1,0 +1,11 @@
+{
+  "name": "blank-jquery",
+  "description": "geobeans demo front-end .",
+  "dependencies": {
+    "sammy": "^0.7.6",
+    "jquery": "^3.1.0",
+    "bootstrap": "^3.3.7",
+    "html5shiv": "^3.7.3",
+    "respond": "^1.4.2"
+  }
+}

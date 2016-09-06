@@ -6,7 +6,7 @@ import java.io.Serializable;
  * 返回结果类
  * Created by ice on 2015/11/28.
  */
-public class JsonResponse implements Serializable {
+public class CustomResponse implements Serializable {
 
     /**
      * 状态
@@ -19,27 +19,33 @@ public class JsonResponse implements Serializable {
     private String message = "";
 
     /**
+     * 消息错误码
+     */
+    private String code = "";
+
+    /**
      * 数据
      */
     private Object data = null;
 
-    public JsonResponse() {
+    public CustomResponse() {
     }
 
-    public JsonResponse(Object data) {
+    public CustomResponse(Object data) {
         this.data = data;
     }
 
-    public JsonResponse(Status status, String message) {
+    public CustomResponse(Status status, String message) {
         this.status = status.toString();
         this.message = message;
     }
 
-    public JsonResponse(Status status, String message, Object data) {
+    public CustomResponse(Status status, String message, String code) {
         this.status = status.toString();
         this.message = message;
-        this.data = data;
+        this.code = code;
     }
+
 
     public String getStatus() {
         return status;
@@ -63,6 +69,14 @@ public class JsonResponse implements Serializable {
 
     public void setData(Object data) {
         this.data = data;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
     }
 
     /**

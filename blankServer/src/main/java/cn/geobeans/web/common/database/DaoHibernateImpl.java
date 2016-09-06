@@ -24,7 +24,7 @@ import org.springframework.util.Assert;
 
 @Repository
 @SuppressWarnings("unchecked")
-public class HibernateDao<T,PK extends Serializable> implements Dao<T,PK>{
+public class DaoHibernateImpl<T,PK extends Serializable> implements Dao<T,PK>{
 
 	protected Logger logger = LoggerFactory.getLogger(getClass());
 	
@@ -33,7 +33,7 @@ public class HibernateDao<T,PK extends Serializable> implements Dao<T,PK>{
 
 	protected Class<T> entityClass;
 	
-	public HibernateDao(){
+	public DaoHibernateImpl(){
 		this.entityClass = ReflectionUtils.getSuperClassGenricType(getClass());
 	}
 	/**

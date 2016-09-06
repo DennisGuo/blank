@@ -43,7 +43,7 @@ dependencies {
     compile group: 'org.springframework', name: 'spring-orm', version: springVer
     //spring 安全
     //spring 授权
-    compile group: 'org.springframework.security.oauth', name: 'spring-security-oauth2', version: '2.0.11.RELEASE'
+//    compile group: 'org.springframework.security.oauth', name: 'spring-security-oauth2', version: '2.0.11.RELEASE'
 //    compile group: 'org.springframework.security', name: 'spring-security-config', version: springSecVer
 //    compile group: 'org.springframework.security', name: 'spring-security-web', version: springSecVer
 
