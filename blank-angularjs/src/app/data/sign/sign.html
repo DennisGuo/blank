@@ -1,0 +1,91 @@
+<div class="container-fluid car-box">
+
+    <div class="panel">
+
+        <div class="panel-heading">
+
+
+            <form class="form-inline" role="form">
+
+                <div class="form-group">
+                    <div class="input-group">
+                        <div class="input-group-addon">车牌号</div>
+                        <input class="form-control" type="text" placeholder="WJXX-12345" ng-model="vm.filter.dName">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="input-group">
+                        <div class="input-group-addon">北斗号</div>
+                        <input class="form-control" type="text" placeholder="135xxx" ng-model="vm.filter.dId">
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-info" ng-click="vm.search()">查询</button>
+                <button type="button" class="btn btn-success" ng-click="vm.add(1)">退役登记</button>
+                <button type="button" class="btn btn-warning" ng-click="vm.add(2)">报废登记</button>
+
+                <div class="pull-right">
+                    <button class="btn btn-default">
+                        <i class="icon ion-document"></i> 导出
+                    </button>
+                </div>
+
+            </form>
+
+        </div>
+
+        <div class="panel-body">
+            <uib-tabset active="0">
+
+                <uib-tab select="vm.loadData(1)">
+                    <uib-tab-heading>
+                        <span class="btn btn-success"> 退役车辆 <span class="badge">{{vm.cars.one.length}}</span></span>
+                    </uib-tab-heading>
+
+                </uib-tab>
+
+                <uib-tab select="vm.loadData(2)">
+                    <uib-tab-heading>
+                        <span class="btn btn-warning">
+                            报废车辆 <span class="badge">{{vm.cars.two.length}}</span>
+                        </span>
+                    </uib-tab-heading>
+                </uib-tab>
+
+            </uib-tabset>
+
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>车牌号</th>
+                        <th>北斗号</th>
+                        <th>状态</th>
+                        <th>登记时间</th>
+                        <th>详情</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="item in vm.carsCrt track by $index">
+                        <td>{{$index+1}}</td>
+                        <td>{{item.dName}}</td>
+                        <td>{{item.dId}}</td>
+                        <td>
+                            <span class="label" ng-class="{'label-success':vm.signType == 1,'label-warning':vm.signType==2}">
+                            {{vm.signType == 1 ? '退役':'报废'}}
+                            </span>
+                        </td>
+                        <td>{{item.timeSign|date:'yyyy年MM月dd日'}}</td>
+                        <td><button class="btn btn-xs btn-default">点击查看详情</button></td>
+                    </tr>
+
+                </tbody>
+            </table>
+
+        </div>
+
+
+    </div>
+
+</div>

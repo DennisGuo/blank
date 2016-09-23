@@ -1,0 +1,90 @@
+<div class="container-fluid report-box">
+    <div class="panel">
+        <div class="panel-heading">
+            <form class="form-inline">
+
+                <div class="form-group">
+                    <div class="input-group">
+                        <div class="input-group-addon">时间段</div>
+                        <input class="form-control" type="text" placeholder="开始时间" ng-model="vm.filter.time.timestart" uib-datepicker-popup="{{vm.filter.time.format}}" is-open="vm.filter.time.openstart" datepicker-options="vm.filter.time.options" ng-required="true" close-text="关闭"
+                            clear-text="清除" current-text="今天">
+                        <div class="input-group-btn">
+                            <button type="button" class="btn btn-default" ng-click="vm.open('openstart')"><i class="glyphicon glyphicon-calendar"></i></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-group">
+                        <input class="form-control" type="text" placeholder="结束时间" ng-model="vm.filter.time.timeend" uib-datepicker-popup="{{vm.filter.time.format}}" is-open="vm.filter.time.openend" datepicker-options="vm.filter.time.options" ng-required="true" close-text="关闭"
+                            clear-text="清除" current-text="今天">
+                        <span class="input-group-btn">
+                                    <button type="button" class="btn btn-default" ng-click="vm.open('openend')"><i class="glyphicon glyphicon-calendar"></i></button>
+                                </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-info" ng-click="vm.search()">查询</button>
+                    <button type="button" class="btn btn-primary" ng-click="vm.add()">编写报告</button>
+                    <button type="button" class="btn btn-success" ng-click="vm.add()">上传报告</button>
+                </div>
+                <div class="pull-right">
+                    <div class="btn-group">
+                        <button class="btn btn-default" ng-class="{'active':vm.showType == 'list'}" ng-click="vm.changeShowType('list')"><i class="glyphicon glyphicon-list"></i></button>
+                        <button class="btn btn-default" ng-class="{'active':vm.showType == 'card'}" ng-click="vm.changeShowType('card')"><i class="glyphicon glyphicon-th-large "></i></button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="panel-body">
+            <div ng-show="vm.showType == 'list' " class="animated slideInLeft">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>标题</th>
+                            <th>时间</th>
+                            <th>作者</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="item in vm.docs track by $index">
+                            <td>{{$index+x}}</td>
+                            <td>{{item.title}}</td>
+                            <td>{{item.time|date:'yyyy年MM月dd日'}}</td>
+                            <td>督查办公室</td>
+                            <td>
+                                <div class="btn-group">
+                                    <button class="btn btn-xs btn-success">
+                                        <i class="glyphicon glyphicon-eye-open"></i> 预览</button>
+                                    <button class="btn btn-xs btn-info">
+                                       <i class="glyphicon glyphicon-download-alt"></i> 下载
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div ng-show="vm.showType == 'card' " class="animated slideInRight">
+                <div class="row" ng-repeat="item in vm.docs track by $index" ng-if="$index%4 == 0 ">
+                    <div class="col-sm-3" ng-repeat="idx in [$index,$index+1,$index+2,$index+3]" ng-if="vm.docs[idx]">
+                        <div class="thumbnail" ng-class="{'bg-info':vm.docs[idx] == vm.docover}" ng-mouseover="vm.docmouseover(vm.docs[idx])" ng-mouseleave="vm.docmouseover(null)">
+                            <img src="images/word.png" alt="{{vm.docs[idx].title}}">
+                            <div class="caption ta-c">
+                                <h5>{{vm.docs[idx].title}} </h5>
+                                <p>
+                                    <small>{{vm.docs[idx].time|date:'yyyy年MM月dd日'}}</small>
+                                </p>
+                            </div>
+                            <div class="doc-detail-box">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

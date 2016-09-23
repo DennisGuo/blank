@@ -1,0 +1,87 @@
+<div class="container-fluid">
+
+    <div class="panel">
+
+        <div class="panel-heading">
+
+
+            <form class="form-inline" role="form">
+
+                <div class="form-group">
+                    <div class="input-group">
+                        <div class="input-group-addon">编码</div>
+                        <input class="form-control" type="text" placeholder="机构编码" ng-model="vm.filter.code">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="input-group">
+                        <div class="input-group-addon">名称</div>
+                        <input class="form-control" type="text" placeholder="机构名称" ng-model="vm.filter.name">
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-info" ng-click="vm.search()">查询</button>
+                <button type="button" class="btn btn-success" ng-click="vm.add()">添加</button>
+                <button type="button" class="btn btn-primary" ng-click="vm.sync()">一体化同步</button>
+
+                <div class="pull-right">
+                    <button class="btn btn-default">
+                        <i class="glyphicon glyphicon-export"></i> 导出
+                    </button>
+                </div>
+
+            </form>
+
+
+
+        </div>
+
+        <div class="panel-body">
+
+            <table class="table table-striped">
+                <tr>
+                    <th>#</th>
+                    <th>编码</th>
+                    <th>简称</th>
+                    <th>全称</th>
+                    <th>操作</th>
+                </tr>
+                <tr ng-repeat="o in vm.orgs track by $index ">
+                    <td>{{$index+1}}</td>
+                    <td>{{o.code}}</td>
+                    <td>{{o.name}}</td>
+                    <td>{{o.orgName}}</td>
+                    <td>
+                        <button class="btn btn-sm btn-default" ng-click="vm.update(o)">
+                        修改
+                    </button>
+                        <button class="btn btn-sm btn-danger">
+                        删除
+                    </button>
+                    </td>
+                </tr>
+
+                <tr ng-show="orgs.length == 0">
+                    <td colspan="5" class="ta-c">
+                        无数据
+                    </td>
+                </tr>
+
+            </table>
+
+            <ul class="pagination">
+                <li class="disabled"><a href="#">&laquo;</a></li>
+                <li class="active"><a href="#">1</a></li>
+                <li><a href="javascript:;">2</a></li>
+                <li><a href="javascript:;">&raquo;</a></li>
+            </ul>
+        </div>
+
+
+    </div>
+
+
+
+
+</div>

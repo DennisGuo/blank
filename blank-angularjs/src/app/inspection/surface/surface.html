@@ -1,0 +1,97 @@
+<div class="container-fluid ">
+    <div class="panel bg-white">
+        <div class="panel-heading">
+            <form class="form-inline" role="form">
+
+                <div class="form-group">
+                    <div class="input-group">
+                        <div class="input-group-addon">车牌号</div>
+                        <input class="form-control" type="text" placeholder="WJXX-12345" ng-model="vm.filter.dName">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="input-group">
+                        <div class="input-group-addon">北斗号</div>
+                        <input class="form-control" type="text" placeholder="135xxx" ng-model="vm.filter.dId">
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-info" ng-click="vm.search()">查询</button>
+            </form>
+
+        </div>
+        <div class="panel-body">
+
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="panel panel-info">
+                        <div class="panel-heading">车辆列表 <span class="pull-right "><span class="glyphicon glyphicon-list" title="筛选结果"></span> &nbsp;筛选</span></div>
+                        <div class="panel-body" style="height:430px;overflow:auto;">
+                            <table class="table table-striped">
+                                <tr ng-repeat="item in vm.cars" ng-class="{'success':vm.car == item}" ng-click="vm.show(item)">
+                                    <td>{{item.dName}} <span class="pull-right"><button class="btn btn-xs btn-warning">登记</button></span><br>
+                                        <small>{{item.jgqc}}</small></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-8">
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            车辆外观 <b>{{vm.car.dName}}</b>
+                            <span class="pull-right">
+                                <button class="btn btn-xs btn-primary">上传图片</button>
+                            </span>
+                        </div>
+                        <div class="panel-body">
+                            <div uib-carousel active="1" interval="3000" >
+                                <div uib-slide ng-repeat="item in vm.car.covers track by $index" index="$index">
+                                    <img ng-src="{{item.url}}" style="margin:auto;height:400px;">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <b>督查记录</b>
+                    <span class="pull-right">
+                        <button class="btn btn-xs btn-primary">
+                        <span class="glyphicon glyphicon-export"></span> 导出
+                    </button>
+                    </span>
+                </div>
+
+                <table class="table table-striped" ng-init="flag = Math.floor(10*Math.random())">
+                    <thead>
+                        <th>#</th>
+                        <th>车牌号</th>
+                        <th>北斗号</th>
+                        <th>督查项</th>
+                        <th>登记时间</th>
+                        <th>详情</th>
+                    </thead>
+                    <tr ng-repeat="item in vm.cars track by $index">
+                        <td>{{$index+1}}</td>
+                        <td>{{item.dName}}</td>
+                        <td>{{item.dId}}</td>
+                        <td>
+
+                            <span class="label label-warning" ng-if="item.dName.indexOf('3')>=0">外观污垢</span>
+                            <span class="label label-danger" ng-if="!(item.dName.indexOf('3')>=0)">车身残损</span>
+
+                        </td>
+                        <td>{{item.editdate|date:'yyyy年MM月dd'}}</td>
+                        <td><button class="btn btn-xs btn-default">点击查看详情</button></td>
+                    </tr>
+                </table>
+            </div>
+
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,136 @@
+<div class="container-fluid car-box">
+
+    <div class="panel">
+
+        <div class="panel-heading">
+
+
+            <form class="form-inline" role="form">
+
+                <div class="form-group">
+                    <div class="input-group">
+                        <div class="input-group-addon">车牌号</div>
+                        <input class="form-control" type="text" placeholder="WJxx-12345" ng-model="vm.filter.dName">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="input-group">
+                        <div class="input-group-addon">北斗号</div>
+                        <input class="form-control" type="text" placeholder="135xxx" ng-model="vm.filter.dId">
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-info" ng-click="vm.search()">查询</button>
+                <button type="button" class="btn btn-success" ng-click="vm.add()">添加</button>
+
+
+                 <div class="pull-right">
+                    <button class="btn btn-default">
+                        <i class="glyphicon glyphicon-export"></i> 导出
+                    </button>
+                </div>
+
+            </form>
+
+        </div>
+
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-sm-4 car-table">
+
+                    <table class="table table-striped table-hover">
+                        <tr>
+                            <th>#</th>
+                            <th>车牌</th>
+                            <th>北斗号</th>
+                        </tr>
+                        <tr ng-repeat="c in vm.cars track by $index " ng-click="vm.showCar(c)" ng-class="{'success':c == vm.car}">
+                            <td>{{$index+1}}</td>
+                            <td>{{c.dName}} <br> {{c.jgqc}}</td>
+                            <td>{{c.dId}}</td>
+                        </tr>
+
+                        <tr ng-show="vm.cars.length == 0">
+                            <td colspan="5" class="ta-c">
+                                无数据
+                            </td>
+                        </tr>
+
+                    </table>
+
+                </div>
+                <div class="col-sm-8 animated" ng-class="{'fadeIn':vm.car}" ng-show="vm.car">
+
+                    <div class="panel panel-success">
+                        <div class="panel-heading">
+                            {{vm.car.dName}}详情
+                            <div class="btn-group pull-right">
+                                <button type="button" class="btn btn-xs btn-warning" ng-click="vm.update(vm.car)">修改</button>
+                                <button type="button" class="btn btn-xs btn-danger">删除</button>
+                            </div>
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div uib-carousel active="0" interval="3000">
+                                        <div uib-slide ng-repeat="slide in vm.car.covers track by $index" index="$index">
+                                            <img ng-src="{{slide.url}}" style="margin:auto;width:100%;">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="row"><span class="col-sm-4 label label-success ta-l"><i class="icon ion-checkmark-circled success"></i> 车牌号</span><span class="col-sm-8">{{vm.car.dName}}</span></div>
+                                    <div class="row"><span class="col-sm-4 label label-success ta-l"><i class="icon ion-checkmark-circled success"></i> 北斗号</span><span class="col-sm-8">{{vm.car.dId}}</span></div>
+                                    <div class="row"><span class="col-sm-4 label label-success ta-l"><i class="icon ion-checkmark-circled success"></i> 所属机构</span><span class="col-sm-8">{{vm.car.jgqc}}</span></div>
+                                    <div class="row"><span class="col-sm-4 label label-success ta-l"><i class="icon ion-checkmark-circled success"></i> 品牌型号</span><span class="col-sm-8">{{vm.car.brand}}/{{vm.car.brandModel}}</span></div>
+                                    <div class="row"><span class="col-sm-4 label label-success ta-l"><i class="icon ion-checkmark-circled success"></i> 车身颜色</span><span class="col-sm-8">{{vm.car.color}}</span></div>
+                                    <div class="row"><span class="col-sm-4 label label-success ta-l"><i class="icon ion-checkmark-circled success"></i> 发动机号</span><span class="col-sm-8">{{vm.car.enginCode}}</span></div>
+                                    <div class="row"><span class="col-sm-4 label label-success ta-l"><i class="icon ion-checkmark-circled success"></i> 发动机排量</span><span class="col-sm-8">{{vm.car.enginOut}}</span></div>
+                                    <div class="row"><span class="col-sm-4 label label-success ta-l"><i class="icon ion-checkmark-circled success"></i> 变速箱</span><span class="col-sm-8">{{vm.car.enginType == 1 ? '自动挡':'手动挡'}}</span></div>
+                                    <div class="row"><span class="col-sm-4 label label-success ta-l"><i class="icon ion-checkmark-circled success"></i> 出厂日期</span><span class="col-sm-8">{{vm.car.timeSale|date:'yyyy年MM月dd日'}}</span></div>
+                                    <div class="row"><span class="col-sm-4 label label-success ta-l"><i class="icon ion-checkmark-circled success"></i> 上牌日期</span><span class="col-sm-8">{{vm.car.timeSign|date:'yyyy年MM月dd日'}}</span></div>
+                                </div>
+                            </div>
+                            <div class="panel">
+                                <div class="panel-body">
+
+                                    <p>
+                                        <span class=" label label-info ta-l"><i class="icon ion-checkmark-circled "></i> 责任人 : </span>
+                                        <b class="text-warning padding">李刚</b>
+                                
+                                        <span class=" label label-primary ta-l"><i class="icon ion-checkmark-circled "></i> 驾驶员 : </span>
+                                        <b class="text-warning padding">李军</b>
+                                    </p>
+                                </div>
+
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>维修时间</th>
+                                            <th>维修内容</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="i in [1,2,3,4,6,7,8,9] track by $index">
+                                            <td>{{vm.car.timeSign|date:'yyyy年MM月dd日'}}</td>
+                                            <td>维修部件{{$index+1}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
+
+</div>

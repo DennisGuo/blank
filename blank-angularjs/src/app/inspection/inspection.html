@@ -1,0 +1,27 @@
+<div class="inspection">
+    <div class="sidebar animated slideInLeft">
+        <div class="title">
+            车辆督查模块
+        </div>
+        <ul class="menus">
+            <li ng-repeat="m in vm.menus" ng-click="vm.clickMenu(m)" ng-class="{'active':m == vm.menu}">
+                <span class="icon {{m.icon}}"></span>{{m.title}}
+            </li>
+        </ul>
+    </div>
+    <div class="content">
+        <div class="content-title animated fadeInUp">
+            {{vm.menu.title}}
+
+            <div class="pull-right">
+                <span class="text-info" title="在线设备"><i class="icon ion-alert-circled"></i> 200</span>
+                <span class="text-warning" title="离线设备"><i class="icon ion-alert-circled"></i> 1000</span>
+                <span class="text-danger" title="报警设备"><i class="icon ion-alert-circled"></i> 30</span>
+            </div>
+
+        </div>
+        <div class="content-main animated zoomIn" ui-view="content">
+
+        </div>
+    </div>
+</div>

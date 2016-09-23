@@ -1,0 +1,24 @@
+<div class="modal-header">
+    <h3 class="modal-title">
+        <span ng-if="vm.area">修改路线</span>
+        <span ng-if="!vm.area">新增路线</span>
+    </h3>
+</div>
+<div class="modal-body" >
+
+
+<form class="form-horizontal" role="form">
+  <div class="form-group">
+    <label  class="col-sm-2 control-label">名称</label>
+    <div class="col-sm-10">
+      <input type="email" class="form-control"  placeholder="xxx" ng-model="vm.area.name">
+    </div>
+  </div>
+  
+</form>
+
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" type="button" ng-click="vm.modalOk()">保存</button>
+    <button class="btn btn-default" type="button" ng-click="vm.modalCancel()">取消</button>
+</div>

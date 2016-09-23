@@ -1,0 +1,84 @@
+<div class="container-fluid">
+
+    <div class="panel">
+
+        <div class="panel-heading">
+
+
+            <form class="form-inline" role="form">
+
+                <div class="form-group">
+                    <div class="input-group">
+                        <div class="input-group-addon">区域名称</div>
+                        <input class="form-control" type="text" placeholder="xxx" ng-model="vm.filter.name">
+                    </div>
+                </div>
+
+
+
+                <button type="submit" class="btn btn-info" ng-click="vm.search()">查询</button>
+                <button type="button" class="btn btn-success" ng-click="vm.add()">添加</button>
+
+                 <div class="pull-right">
+                    <button class="btn btn-default">
+                        <i class="glyphicon glyphicon-export"></i> 导出
+                    </button>
+                </div>
+
+            </form>
+
+        </div>
+
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-sm-4 car-table">
+                    <div class="panel panel-success">
+                        <div class="panel-heading">
+                            区域列表 <span class="pull-right "><span class="glyphicon glyphicon-list" title="筛选结果"></span> &nbsp;筛选</span>
+                        </div>
+                        <div class="panel-body">
+                            <div class="table-responsive" style="height:400px;">
+                                <table class="table table-striped table-hover" style="word-break:break-all; word-wrap:break-all;">
+                                    <tr ng-repeat="c in vm.areas track by $index " ng-click="vm.show(c)" ng-class="{'success':c == vm.area}">
+                                        <td>{{c.name}}</td>
+                                    </tr>
+
+                                    <tr ng-show="vm.areas.length == 0">
+                                        <td class="ta-c">
+                                            无数据
+                                        </td>
+                                    </tr>
+
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-sm-8">
+
+                    <div class="panel panel-success">
+                        <div class="panel-heading">
+                            区域详情
+                            <div class="btn-group pull-right" ng-show="vm.area">
+                                <button type="button" class="btn btn-xs btn-warning" ng-click="vm.update(vm.area)">修改</button>
+                                <button type="button" class="btn btn-xs btn-danger">删除</button>
+                            </div>
+                        </div>
+                        <div class="panel-body">
+                            <div id="areaShowMap" class="areaShowMap" map-view map-obj="vm.mapObj">
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
+
+</div>

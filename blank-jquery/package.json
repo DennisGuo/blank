@@ -9,6 +9,7 @@
     "gulp-clean": "^0.3.2",
     "gulp-clean-css": "^2.0.12",
     "gulp-concat": "^2.6.0",
+    "gulp-connect": "^5.0.0",
     "gulp-html-replace": "^1.6.1",
     "gulp-htmlmin": "^2.0.0",
     "gulp-image": "^2.6.0",

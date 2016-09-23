@@ -1,0 +1,54 @@
+@import '../../less/_variables.less';
+.login {
+    position: absolute;
+    width: 880px;
+    height: 512px;
+    position: absolute;
+    left: 50%;
+    margin-left: -570px;
+    top: 50%;
+    margin-top: -260px;
+    background: url('../images/port_login_form.png') no-repeat center;
+    .form-head {
+        height: 100px;
+        color: @txt-blue-light;
+        margin-left: 265px;
+        text-align: center;
+        margin-top: 100px;
+        
+        h1{
+            line-height: 100px;
+        }
+    }
+    .form-body {
+        margin-left: 265px;
+        margin-top: 80px;
+        text-align: center;
+        line-height: 40px;
+    }
+    .form-body table {
+        margin: 20px;
+        color: @txt-blue-dark;
+        margin-left: 100px;
+    }
+    .form-body table th,
+    .form-body table td {
+        padding: 5px 10px;
+    }
+    .form-body table th {
+        text-align: left;
+    }
+    .ipt-login {
+        background-color: transparent;
+        line-height: normal;
+    }
+    .ipt-login:focus {
+        outline-offset: none;
+        outline: none;
+    }
+    .login-err {
+        position: absolute;
+        margin-top: -40px;
+        margin-left: 172px;
+    }
+}

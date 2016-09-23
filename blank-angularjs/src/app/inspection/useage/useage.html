@@ -1,0 +1,84 @@
+<div class="container-fluid">
+    <div class="panel bg-white">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="thumbnail ta-c bg-info" style="height:270px;">
+                        <div class="caption">
+                            <h4>车辆公里限额</h4>
+                            <p>
+                                <span class="circle bg-info wh100">600,000 KM</span>
+                            </p>
+                            <p>此项配置将用于督查统单辆车辆做多行驶总公里数</p>
+                            <p><button class="btn btn-primary">修改</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-9">
+                    <div class="panel panel-info" >
+                        <div class="panel-body" style="height:270px;overflow:hidden">
+                         
+                                <canvas  
+                                    class="chart-bubble" 
+                                    chart-options="vm.chart.options"
+                                    chart-data="vm.chart.data"
+                                    chart-series="vm.chart.series" >
+                                    </canvas>
+                           </div>
+                    </div>
+                        
+               </div>
+            </div>
+        </div>
+        <div class="panel-body">
+        <div class="panel panel-info">
+            <div class="panel-heading">车辆使用记录
+
+                <div class="pull-right">
+                    <div class="btn-group">
+                     <button class="btn btn-xs btn-success">
+                        <span class="glyphicon glyphicon-pencil"></span> 补记
+                    </button>
+                                <button class="btn btn-xs btn-primary">
+                        <span class="glyphicon glyphicon-export"></span> 导出
+                    </button>
+                        </div>
+                    </div>
+                </div>
+                <table class="table table-striped">
+                    <thead>
+                        <th>#</th>
+                        <th>车牌号</th>
+                        <th>北斗号</th>
+                        <th>出厂时间</th>
+                        <th>行驶公里</th>
+                        <th>总在线时间</th>
+                        <th>详情</th>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="item in vm.cars track by $index">
+                            <td>{{$index+1}}</td>
+                            <td>{{item.dName}}</td>
+                            <td>{{item.dId}}</td>
+                            <td>{{item.editdate|date:'yyyy年MM月dd'}}</td>
+                            <td>
+                                <span class="label" ng-class="{
+                                'label-info':vm.getRandomUsage(item) <= 2000,
+                                'label-success':vm.getRandomUsage(item) > 2000 && vm.getRandomUsage(item) <= 5000,
+                                'label-primary':vm.getRandomUsage(item) > 5000 && vm.getRandomUsage(item) <= 14000,
+                                'label-warning':vm.getRandomUsage(item) > 14000 && vm.getRandomUsage(item) <= 80000,
+                                'label-danger':vm.getRandomUsage(item) > 80000 
+                            }">
+                                {{vm.getRandomUsage(item)}}
+                            </span>
+
+                            </td>
+                            <td>{{vm.getRandomUsage(item)/($index+1)|number:0}}小时</td>
+                            <td><button class="btn btn-xs btn-default">点击查看详情</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

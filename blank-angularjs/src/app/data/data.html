@@ -1,0 +1,22 @@
+<div class="data">
+    <div class="sidebar animated slideInLeft">
+        <div class="title">
+            数据管理模块
+        </div>
+        <ul class="menus">
+            <li ng-repeat="m in vm.menus"
+                ng-click="vm.clickMenu(m)"
+                ng-class="{'active':m == vm.menu}">
+                <span class="icon {{m.icon}}"></span>{{m.title}}
+            </li>
+        </ul>
+    </div>
+    <div class="content">
+        <div class="content-title animated fadeInUp">
+            {{vm.menu.title}}
+        </div>
+        <div class="content-main animated zoomIn" ui-view="content">
+
+        </div>
+    </div>
+</div>

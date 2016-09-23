@@ -1,0 +1,21 @@
+<div class="port">
+    <div class="port-cards">
+        <div class="port-card animated " 
+            ng-repeat="card in vm.cards track by $index" 
+            ng-mouseover="vm.cardMouseOver($index)"
+            ng-mouseleave="vm.cardMouseLeave($index)"
+            ng-class="{
+                'bounceInDown':vm.card_{{$index}} && !vm.card_{{$index}}_mover && !vm.cardsRendered,
+                'unvisiable':!vm.card_{{$index}},
+
+                'pulse':vm.card_{{$index}}_mover,
+                'infinite':vm.card_{{$index}}_mover
+                }">
+
+            <a ng-href="{{card.link}}" target="{{card.link.startsWith('#')?'_self':'_blank'}}">
+                <img ng-src="{{card.img}}" alt="{{card.title}}">
+            </a>
+        </div>
+    </div>
+    <div class="card-desc">{{vm.card.desc||'北斗应用平台软件是公安边防部队在公安部北斗应用示范指导下，基于北斗卫星导航系统以及部队已有信息化基础，设计研发的一套满足部队管理、服务部队实战的信息系统。通过对该系统的建设，一方面检验北斗卫星导航系统及终端设备保障、服务部队工作的能力，另一方面也为部队定位信息集中管理、定位应用模块化建设的信息化建设思路，提供实战和检验机会。'}}</div>
+</div>

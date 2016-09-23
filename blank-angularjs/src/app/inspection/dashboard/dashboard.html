@@ -1,0 +1,44 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="panel panel-primary">
+                <div class="panel-heading">平均速度</div>
+                <div class="panel-body">
+                    <canvas id="line" class="chart chart-line" chart-data="vm.speed.data" chart-labels="vm.speed.labels" >
+                    </canvas>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-6">
+
+            <div class="panel panel-danger">
+                <div class="panel-heading">事故统计</div>
+                <div class="panel-body">
+                    <canvas id="bar" class="chart chart-bar" chart-data="vm.accident.data" chart-labels="vm.accident.labels" chart-series="vm.accident.series">
+                    </canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+             <div class="panel panel-success">
+                <div class="panel-heading">设备类型分布</div>
+                <div class="panel-body">
+                    <canvas id="radar" class="chart chart-radar" chart-data="vm.types.data" chart-labels="vm.types.labels" chart-options="vm.types.options">
+                    </canvas>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+             <div class="panel panel-info">
+                <div class="panel-heading">设备在线状态</div>
+                <div class="panel-body">
+                    <canvas id="line" class="chart chart-line" chart-data="vm.status.data" chart-labels="vm.status.labels" chart-series="vm.status.series" chart-options="vm.status.options">
+                    </canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

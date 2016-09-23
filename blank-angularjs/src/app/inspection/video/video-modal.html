@@ -1,0 +1,18 @@
+<div class="modal-header">
+    <h3 class="modal-title" id="modal-title">播放{{vm.videoPlay.title}}</h3>
+</div>
+<div class="modal-body" id="modal-body">
+    <!--<div class="embed-responsive embed-responsive-4by3">-->
+    <div class="row">
+        <div class="col-sm-12">
+            <video controls autoplay loop style="width: 100%;">
+            <source ng-src="{{vm.videoPlay.src}}" type="video/mp4">
+        </video>
+        </div>
+    </div>
+    <!--</div>-->
+</div>
+<div class="modal-footer">
+    <button class="btn btn-warning pull-left" type="button" ng-click="vm.sign()" tooltip-placement="right" uib-tooltip="通过监控视频发现并登记车辆相关督查事件">督查登记</button>
+    <button class="btn btn-default" type="button" ng-click="vm.playCancel()">关闭</button>
+</div>

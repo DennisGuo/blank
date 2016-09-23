@@ -1,0 +1,172 @@
+@import '_variables.less';
+
+* {
+    padding:0;
+    margin:0;
+}
+html,body{
+    width:100%;
+    height:100%;
+    font-family: "微软雅黑",sans-serif;
+    min-height: 690px;
+    min-width: 860px;
+    overflow: hidden;
+}
+body{
+    background: url('../images/port_bg.jpg') no-repeat center top;
+}
+
+a,img{
+    border:none;
+    color:#fff;
+}
+
+input{
+    padding:5px 10px;
+    border:none;
+    margin-right: 5px;
+}
+
+button{
+    padding:5px 10px;
+    border:none;
+    cursor: pointer;
+        line-height: normal;
+}
+label{
+    font-size: 12px;
+    font-weight: normal;
+    color: #b4b4b4;
+}
+.header{
+    height:100px;
+    background-color: @black-alpha;
+    padding:0 40px;
+    color: #fff;
+}
+.header .logo,
+.header .time{
+    font-weight: bold;
+}
+.header .logo{
+    line-height: 100px;
+    float: left;
+    font-size: 24px;
+    
+}
+.header .logo img{
+    margin-right: 20px;
+    float: left;
+    margin-top: 15px;
+}
+.header .time{
+    float:right;
+    text-align: right;
+    margin-top:27px;
+}
+.header .time .time-tick{
+    font-size: 20px;
+}
+.header .time .time-date{
+    font-size:14px;
+    font-weight: normal;
+}
+.header-content{
+    padding: 10px 20px;
+    
+    background-color: @black-alpha;
+    line-height: 20px;
+    margin-top: 30px;
+    margin-left: 20px;
+    display: inline;
+    float: left;
+    border-radius: 5px;
+    border: 1px solid #74c9ff;
+
+}
+.main-content{
+    position: absolute;
+    top:100px;
+    bottom:40px;
+    left:0;
+    right:0;
+    overflow: auto;
+}
+.footer{
+    display: block;
+    height:40px;
+    line-height: 30px;
+    padding:5px 40px;
+    background-color: @black-alpha;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right:0;
+    color: #eee;
+}
+.bg-white{
+    background-color: #fff;
+}
+.user-info{
+    float:right;
+    line-height: 30px;
+}
+.btn-logout{
+    text-decoration: underline;
+    font-size: 14px;
+    background-color:@black-alpha;
+    padding:2px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    border: 1px solid #74c9ff;
+}
+.btn-blue{
+    color:#fff;
+    background-color: #55aaf9;
+    border:1px solid #43a0f6;
+}
+.btn-blue:hover,
+.btn-blue.active{
+    background-color: #147cdc;
+}
+.sub-title{
+    font-size: 12px;
+    color:#b4b4b4;
+}
+.circle{
+    border-radius: 1000px;
+}
+.wh100{
+    width: 100px;
+    height:100px;
+    display: inline-block;
+    line-height: 100px;
+    text-align: center;
+}
+.msg-err{
+    color:#f55;
+}
+.ipt-group{
+    background-color: @bg-blue-lighter;
+    border:1px solid #8cc8ff;
+    border-radius: 2px;
+}
+.ipt-icon-left{
+    float: left;
+    margin:0 10px;
+}
+.unvisiable{
+    visibility: hidden
+}
+.ta-c {
+    text-align: center;
+}
+.ta-l{
+    text-align: left;
+}
+.cur-p{
+    cursor: pointer;
+}
+.padding{
+    padding:10px;
+}

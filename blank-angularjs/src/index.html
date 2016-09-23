@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+
+<head>
+    <meta charset="UTF-8">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>公安边防部队北斗应用平台软件</title>
+    <!--加载CSS文件    -->
+    <!-- build:vendorCss -->
+    <!-- endbuild -->
+
+    <!-- build:appCss -->
+    <!-- endbuild -->
+
+    <!--IE低版本判断-->
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="./vendors/js/html5shiv.min.js"></script>
+      <script src="./vendors/js/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body >
+    <div class="app-container">
+        <div class="header">
+            <div class="logo">
+                <img src="./images/logo.png" alt="警徽">
+                <span>{{site.title}}</span>
+            </div>
+
+            <div class="header-content">
+                    在线设备数：23454
+            </div>
+
+            <a class="header-content cur-p"  title="系统管理" href="http://10.0.0.184:1081/BFICP_TP_URight/login.action" target="_blank">
+                
+                <i class="icon ion-gear-b"></i>
+            </a>
+
+            <div class="header-content cur-p" 
+                ui-sref="port" 
+                ng-show="showHome()" 
+                title="回到主页">
+                <span class="icon ion-home"></span>
+            </div>
+
+            <div class="time">
+                <div class="time-tick" time-tick></div>
+                <div class="time-date" time-date></div>
+            </div>
+        </div>
+        <div class="main-content" ui-view>
+
+        </div>
+        <div class="footer" ng-show="user">
+
+            <span class="copyrigh">
+                版权所有 &copy; 公安边防局  &nbsp;技术支持：东华软件股份公司
+            </span>
+            <span class="user-info">
+
+                <span class="glyphicon glyphicon-tower"></span> {{user.org}}                
+
+                <span class="glyphicon glyphicon-user"></span> {{user.name}} 
+                <span class="btn-logout" ui-sref="login">退出</span> 
+            </span>
+        </div>
+    </div>
+
+    <!--加载JS文件-->
+
+    <!-- build:vendorJs -->
+    <!-- endbuild -->
+
+    <!-- build:appJs -->
+    <!-- endbuild -->
+
+    <script src="vendors/js/MapExpressFlash/MapExpress.js"></script>
+
+</body>
+
+</html>

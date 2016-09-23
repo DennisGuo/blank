@@ -1,0 +1,77 @@
+@import '../../less/_variables.less';
+.data{
+    position: absolute;
+    top:0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: @txt-gray;
+
+    .sidebar{
+        position:absolute;
+        top:0;
+        left:0;
+        width:200px;
+        bottom:0;
+        color:#fff;
+        background-color:@txt-blue-dark;
+
+        .icon{
+            margin-right:10px;
+        }
+
+        .title{
+            padding:15px 10px;
+            font-size: 16px;
+           background-color:@bg-blue;
+            color:@txt-gray;   
+        }
+        .menus{
+            line-height: 1.4em;
+
+            li{
+                padding: 10px;
+                cursor: pointer;
+
+                &.active,
+                &:hover{
+                    background-color: @txt-gray;
+                    color:@txt-blue-dark;
+                }
+            }
+        }
+
+    }
+
+    .content{
+        position: absolute;
+        left:200px;
+        top:0;
+        right:0;
+        bottom:0;
+        overflow: auto;
+
+        .content-title{
+            font-size: 1.2em;
+            font-weight: bold;
+            padding:15px;
+            background-color: #fff;
+        }
+
+        .content-main{
+            position: absolute;
+            top:71px;
+            left:0;
+            right:0;
+            bottom:0;
+            overflow: auto;
+        }
+
+        .form-group{
+            margin-right: 5px;
+        }
+
+
+    }
+    
+}

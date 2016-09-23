@@ -1,0 +1,37 @@
+<div class="login animated slideInDown" ng-class="{'slideOutDown':vm.formOut}">
+    <div class="form-head">
+        <h1>北斗应用平台软件</h1>
+    </div>
+    <form class="form-body">
+        <p class="msg-err login-err animated" ng-class="{'shake':vm.loginErr}" ng-show="vm.loginErr">{{vm.loginErr}}</p>
+        <table>
+            <tr>
+                <th>用户名</th>
+                <td>
+                    <div class="ipt-group">
+                        <span class="ipt-icon-left icon ion-person"></span>
+                        <input type="text" class="ipt-login" placeholder="请输入用户名" ng-model="vm.username">
+                    </div>
+                </td>
+                <th>
+                    <input type="checkbox" id="remember" ng-model="vm.remember">
+                    <label for="remember">记住账号</label>
+                </th>
+            </tr>
+            <tr>
+                <th>密码</th>
+                <td>
+                    <div class="ipt-group">
+                        <span class="ipt-icon-left icon ion-locked"></span>
+                        <input type="password" class="ipt-login" placeholder="请输入密码" ng-model="vm.password">
+                    </div>
+                </td>
+                <th>
+                    <button type="submit" class="btn btn-primary" ng-click="vm.login();">登录</button>
+                    <button type="button" class="btn btn-warning" ng-click="vm.loginSingle();">单点登录</button>
+                </th>
+            </tr>
+        </table>
+        <p class="sub-title">版权所有&copy;公安边防部队 &nbsp;技术支持：东华软件股份公司</p>
+    </form>
+</div>

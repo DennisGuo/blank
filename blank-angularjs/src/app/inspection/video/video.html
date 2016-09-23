@@ -1,0 +1,37 @@
+<div class="container-fluid video-box">
+    <div class="panel">
+        <div class="panel-heading">
+            <form class="form-inline" role="form">
+
+                <div class="form-group">
+                    <div class="input-group">
+                        <div class="input-group-addon">督查监控镜头名称</div>
+                        <input class="form-control" type="text" placeholder="XXX" ng-model="vm.filter.title">
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-info" ng-click="vm.search()">查询</button>
+                <button type="button" class="btn btn-success" ng-click="vm.add()">添加</button>
+
+                <div class="pull-right">
+                    <span><i class="glyphicon glyphicon-filter"></i>  筛选</span>
+                </div>
+
+            </form>
+        </div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-sm-3" ng-repeat="item in vm.videos ">
+                    <!--<div id="videoInspection" map-view map-obj="vm.mapObj" style="height:400px;"></div>-->
+                    <div class="thumbnail" ng-mouseover="vm.hover(item)" ng-mouseleave="vm.hover(null)">
+                        <span class="video-play" title="播放" ng-show="item == vm.videoHover" ng-click="vm.play(item)"></span>
+                        <img ng-src="{{item.cover}}" alt="{{item.title}">
+                        <div class="caption">
+                            <p>{{item.title}} <br> <small>{{item.org}}</small></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

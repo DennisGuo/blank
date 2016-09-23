@@ -1,0 +1,107 @@
+<div class="container-fluid">
+    <div class="panel">
+        <div class="panel-body">
+            <div class="panel">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-sm-4">
+
+
+                            <form class="form-horizontal">
+
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <div class="input-group-addon">开始时间</div>
+                                        <input class="form-control" type="text" placeholder="开始时间" ng-model="vm.filter.time.timestart" uib-datepicker-popup="{{vm.filter.time.format}}" is-open="vm.filter.time.openstart" datepicker-options="vm.filter.time.options" ng-required="true" close-text="关闭"
+                                            clear-text="清除" current-text="今天">
+                                        <span class="input-group-btn">
+                                    <button type="button" class="btn btn-default" ng-click="vm.open('openstart')"><i class="glyphicon glyphicon-calendar"></i></button>
+                                </span>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <div class="input-group-addon">结束时间</div>
+                                        <input class="form-control" type="text" placeholder="结束时间" ng-model="vm.filter.time.timeend" uib-datepicker-popup="{{vm.filter.time.format}}" is-open="vm.filter.time.openend" datepicker-options="vm.filter.time.options" ng-required="true" close-text="关闭"
+                                            clear-text="清除" current-text="今天">
+                                        <span class="input-group-btn">
+                                        <button type="button" class="btn btn-default" ng-click="vm.open('openend')"><i class="glyphicon glyphicon-calendar"></i></button>
+                                    </span>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <div class="input-group-addon">车牌号码</div>
+                                        <input class="form-control" type="text" placeholder="WJXX-12345" ng-model="vm.filter.dName">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <div class="input-group-addon">北斗号码</div>
+                                        <input class="form-control" type="text" placeholder="135xxx" ng-model="vm.filter.dId">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <div class="input-group-addon">驾驶人员</div>
+                                        <input class="form-control" type="text" placeholder="xxx" ng-model="vm.filter.driver">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-info" ng-click="vm.search()">分析统计</button>
+                                    <button type="submit" class="btn btn-warning" ng-click="vm.add()">登记</button>
+                                </div>
+                            </form>
+
+                        </div>
+
+                        <div class="col-sm-8">
+                            <div class="panel panel-info">
+                                <div class="panel-heading">
+                                    年度事故发生情况
+                                    <div class="pull-right">
+                                        <button class="btn btn-xs btn-primary">
+                                            <span class="glyphicon glyphicon-export"></span> 导出
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="panel-body">
+                                    <canvas class="chart chart-bar" chart-data="vm.chart.data" chart-labels="vm.chart.labels" chart-series="vm.chart.series" chart-options="vm.chart.options" chart-dataset-override="vm.chart.datasetOverride">
+                                            </canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>车牌号</th>
+                            <th>北斗号</th>
+                            <th>驾驶员</th>
+                            <th>事故</th>
+                            <th>时间</th>
+                            <th>详情</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="item in vm.cars track by $index">
+                            <td>{{$index+1}}</td>
+                            <td>{{item.dName}}</td>
+                            <td>{{item.dId}}</td>
+                            <td random data='vm.drivers'></td>
+                            <td><span class="label label-danger" random data= 'vm.accidents'></span> </td>
+                            <td>{{item.editdate|date:'yyyy年MM月dd日'}}</td>
+                            <td><button class="btn btn-xs btn-default">点击查看详情</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+</div>
