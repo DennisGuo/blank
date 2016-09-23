@@ -7,6 +7,8 @@ var htmlmin = require('gulp-htmlmin');
 var imgmin = require('gulp-image');
 var cache = require('gulp-cache');
 var replace = require('gulp-html-replace');
+var connect = require('gulp-connect');
+var open = require('gulp-open');
 
 var runSeq = require('run-sequence');
 var argv = require('yargs').argv;
@@ -36,9 +38,29 @@ var path = {
 
 
 //默认任务，直接执行gulp将会执行
-gulp.task('default', function() {
+gulp.task('default', ['serve'],function() {
 
 
+});
+
+//启动SERVER来调试应用
+gulp.task('serve',['build','watch'],function(){
+    connect.server({
+        port:3000,
+        root:'dist',
+        livereload:true
+    });
+
+    gulp.src('dist')
+    .pipe(open({uri: 'http://localhost:3000'}));
+});
+
+//监控文件变化
+gulp.task("watch",function(){
+    gulp.watch(path.src.css,['css']);
+    gulp.watch(path.src.js,['js']);
+    gulp.watch(path.src.images,['img']);
+    gulp.watch(path.src.html,['html']);
 });
 
 //构建DIST目录内容

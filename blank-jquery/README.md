@@ -6,12 +6,9 @@
 - [jquery](https://github.com/jquery/jquery.git) : jquery库
 - [bootstrap](https://github.com/twbs/bootstrap.git) : bootstrap界面框架
 
-安装前端依赖，执行以下bower命令
+## 应用启动过程
 
-> bower install --save jquery 
-
-> bower install --save sammy 
-
-> bower install --save bootstrap
-
----
+- 执行 `cnpm install` 安装 `gulp` 依赖
+- 执行 `bower instal` 安装前端依赖
+- 执行 `gulp serve` 运行测试服务
+- 打开浏览器访问 `localhost:3000` 访问应用 
