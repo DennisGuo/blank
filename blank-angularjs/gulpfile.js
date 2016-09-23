@@ -11,6 +11,7 @@ var connect = require('gulp-connect');
 var order = require('gulp-order');
 var ngAnnotate = require('gulp-ng-annotate');
 var less = require('gulp-less');
+var open = require('gulp-open');
 
 var runSeq = require('run-sequence');
 var argv = require('yargs').argv;
@@ -60,7 +61,7 @@ var path = {
 
 
 //默认任务，直接执行gulp将会执行
-gulp.task('default', function() {
+gulp.task('default',['serve'], function() {
 
 
 });
@@ -72,6 +73,8 @@ gulp.task('serve',['build','watch'],function(){
         root:'dist',
         livereload:true
     });
+    gulp.src('dist')
+    .pipe(open({uri:'http://localhost:3000'}));
 });
 
 //监控文件变化
