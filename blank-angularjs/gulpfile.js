@@ -16,7 +16,6 @@ var open = require('gulp-open');
 var runSeq = require('run-sequence');
 var argv = require('yargs').argv;
 
-
 //是否为生产环境：gulp --production=true 参数来设置
 var EVN_PRODUCTION = argv.production;
 var path = {
@@ -26,13 +25,15 @@ var path = {
         js: [
             ////
             'src/app/inspection/*module.js',
-            'src/app/inspection/**/*config.js',
+            'src/app/inspection/*config.js',
             'src/app/inspection/**/*service.js',
+            'src/app/inspection/**/*.js',
             ////
             ////
             'src/app/data/*module.js',
-            'src/app/data/**/*config.js',
+            'src/app/data/*config.js',
             'src/app/data/**/*service.js',
+            'src/app/data/**/*.js',
             ////
             'src/**/*module.js',
             'src/**/*config.js',
@@ -59,10 +60,8 @@ var path = {
     }
 };
 
-
 //默认任务，直接执行gulp将会执行
 gulp.task('default',['serve'], function() {
-
 
 });
 
