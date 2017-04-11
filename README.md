@@ -33,31 +33,23 @@ clone 项目的 git 命令：
 
 ## 前端：blank
 
-前端的集成开发环境需要使用NodeJS 以及相关的包
+前端的集成开发环境需要使用`NodeJS` 以及相关的包
 
 ![Alt 前端开发环境](http://plantuml.com/plantuml/png/IylFIKajKdZQsVjyzVgdUngUzazythV-wQ9c1GLbqyH4ezJKQYuk1GZ8oqz9LL3o0v9UnKeAocbfYOa61We8UOIQfFpor28bLF6IL8MYpFIC4gldwnO-dz3sPD_S5rkdOT6RNffJW4EhWfN2yptJNgoV-BYXyTcybgUxTm4PJoTqFDsvBIRlQL_typqhGJBRjp_RtWPYT4v-sjCQa_TyziHdVSj1IlidFjtH39BPslrY_TJdQpjXzjGgSDK20000)
 
-- 安装NodeJS：到[官网](https://nodejs.org/en/)下载最新的NodeJS运行环境，`node -v` 查看版本
-由于npm的仓库在国外，所以推荐使用淘宝的镜像仓库，
+安装NodeJS：到[https://nodejs.org/en/](https://nodejs.org/en/)下载最新的`NodeJS`运行环境，`node -v` 查看版本
 
-- 安装 `cnpm` 命令代替 `npm` ,使用taobao镜像下载资源更快
+由于国外的`npm`源比较慢，建议修改`npm`配置改为国内源:`https://registry.npm.taobao.org`，命令如下：
 
-    >  npm install -g cnpm --registry=https://registry.npm.taobao.org
-
-- 初始化项目
-
-    - 初始化node包管理
-        > npm init 
-
-    - 安装bower,初始化 bower
-        > cnpm install -g bower
-
-        > bower init 
-
-    - 安装 gulp
-        > cnpm install -g gulp
-
-### **Gulp 相关内容**
+```shell
+# 设置国内源
+npm config set registry=https://registry.npm.taobao.org 
+# 设置loglevel日志等级为info
+npm config set loglevel=info
+# 查询npm 配置
+npm config list
+```
+### Gulp 相关内容
 
 
 
