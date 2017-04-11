@@ -2,8 +2,12 @@
   "name": "bd_portal",
   "version": "1.0.0",
   "description": "",
+  "scripts": {
+    "postinstall":"bower install"
+  },
   "devDependencies": {
     "bower": "^1.7.9",
+    "bower-npm-resolver": "^0.7.0",
     "gulp": "^3.9.1",
     "gulp-cache": "^0.4.5",
     "gulp-clean": "^0.3.2",
