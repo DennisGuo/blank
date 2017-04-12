@@ -5,10 +5,7 @@
         .module ('app.inspection')
         .directive ('random', randomFn);
 
-
-    /** @ngInject */
     function randomFn() {
-
 
         return {
             bindToController: true,
@@ -21,13 +18,15 @@
                 data:'='
             },
         }
-
-        function randomDriverController($scope){
+        /** @ngInject */
+        function randomDriverController($scope,$timeout){
             var vm = this;
-            vm.data =  $scope.vm.data;
-            vm.name = null;
-            init();
-
+            $timeout(function(){
+                vm.data =  $scope.vm.data;
+                vm.name = null;
+                 init();
+           },600);
+           
             function init(){
                 vm.name = vm.data[Math.floor(Math.random()*vm.data.length)];
             }
@@ -37,7 +36,6 @@
 
         }
 
-        
     }
 
 } ());
