@@ -23,6 +23,7 @@ var path = {
         _self: 'src',
 
         js: [
+            'src/app/map/*module.js',
             ////
             'src/app/inspection/*module.js',
             'src/app/inspection/*config.js',

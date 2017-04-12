@@ -8,7 +8,6 @@
 
     ////////////////////////////////
 
-
     function mapView() {
 
         return {
@@ -24,27 +23,34 @@
         }
 
         /** @ngInject */
-        function mapViewController($scope) {
+        function mapViewController($scope,$timeout) {
             var vm = this;
-            vm.mapObj = $scope.vm.mapObj;
-            vm.options = {
-                addr: {
-                    vector: 'http://10.0.0.196:8888/QuadServer/maprequest?services=PGIS_vector',
-                    vectorTrans: 'http://10.0.0.196:8888/QuadServer/maprequest?services=PGIS_tranc',
-                    raster: 'http://10.0.0.196:8888/QuadServer/maprequest?services=PGIS_raster',
-                },
-                center: {
-                    x: 119.39235020091961,
-                    y: 35.110788417764596
-                },
-                mapExtent: "-256, 256, -256, 256",
-
-            };
-
+        
             init();
 
             function init() {
-                initMap();
+
+                $timeout(function(){
+                    initConfig();
+                    initMap();
+                },600);
+            }
+
+            function initConfig(){
+                vm.mapObj = $scope.vm.mapObj;
+                vm.options = {
+                    addr: {
+                        vector: 'http://10.0.0.196:8888/QuadServer/maprequest?services=B_vector',
+                        vectorTrans: 'http://10.0.0.196:8888/QuadServer/maprequest?services=B_tranc',
+                        raster: 'http://10.0.0.196:8888/QuadServer/maprequest?services=B_raster',
+                    },
+                    center: {
+                        x: 119.39235020091961,
+                        y: 35.110788417764596
+                    },
+                    mapExtent: "-256, 256, -256, 256",
+
+                };
             }
 
             function initMap() {
@@ -87,7 +93,6 @@
 
         function link() {}
     };
-
 
     /** @ngInject */
     function MapService() {
